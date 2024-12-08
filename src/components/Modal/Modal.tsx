@@ -1,23 +1,15 @@
 import ModalProps from './Modal.types';
 import "./Modal.styles.css"
+import ModalOpen from './ModalOpen';
 
 
-export default function Modal({isOpen, title, children, onClose}:ModalProps) {
+export default function Modal({isOpen, children, ...restProps}:ModalProps) {
     if(!isOpen){
         return null;
     }
     return (
-        <div className='modal-backdrop'>
-            <div className='modal-dialog' role='dialog'>
-                <div className='modal-header'>
-                    {/* h2 tags get heading role automatically */}
-                    <h2>{title}</h2> 
-                </div>
-                <div className='modal-body'>{children}</div>
-                <div className='modal-footer'>
-                    <button type="button" aria-label="Close modal" onClick={onClose}>Close</button>
-                </div>
-            </div>
-        </div>
+        <ModalOpen {...restProps}>
+            {children}
+        </ModalOpen>
   )
 }
