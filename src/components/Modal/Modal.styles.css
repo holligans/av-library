@@ -1,0 +1,15 @@
+.modal-backdrop{
+    background:rgba(0,0,0,.7);
+    position: fixed;
+    inset:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal-dialog{
+    width:500px;
+    background-color:#fff;
+    padding:2em;
+    border-radius: 10px;
+    color:#000;
+}
