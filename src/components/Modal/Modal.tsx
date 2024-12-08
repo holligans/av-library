@@ -8,13 +8,14 @@ export default function Modal({isOpen, title, children, onClose}:ModalProps) {
     }
     return (
         <div className='modal-backdrop'>
-            <div className='modal-dialog'>
+            <div className='modal-dialog' role='dialog'>
                 <div className='modal-header'>
-                    <h2>{title}</h2>
+                    {/* h2 tags get heading role automatically */}
+                    <h2>{title}</h2> 
                 </div>
                 <div className='modal-body'>{children}</div>
                 <div className='modal-footer'>
-                    <button type="button" onClick={onClose}>Close</button>
+                    <button type="button" aria-label="Close modal" onClick={onClose}>Close</button>
                 </div>
             </div>
         </div>
