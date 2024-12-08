@@ -1,50 +1,29 @@
-# React + TypeScript + Vite
+# Alexander F Vazquez - take-home assessment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Project Notes:
 
-Currently, two official plugins are available:
+## Modal Component
+1. **Core functionality**  The modal works and passes the provided tests; however, it lacks focus management, which significantly impacts usability. Without proper focus management, the component becomes less accessible and disrupts the user experience, particularly for assistive technologies.
+2. **Scalability** To enhance scalability, I would implement the Compound Component Pattern along with styled-components, allowing the creation of subcomponents such as <Modal.Header>, <Modal.Footer>, and others. This approach ensures flexibility and reusability
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Decisions Made
+- **Project Setup**: I used Vite, TypeScript, Vitest, React and RTL as recommended. These tools provide a modern, efficient, and fast development environment
+- **CSS-in-JS**: (Not implemented) I plan to use styled-components to manage styles. This ensures scoped, dynamic styling and allows for theme integration, enhancing maintainability and flexibility.
+- **Distribution**: (Not implemented) I will distribute this library through npm registery, I based my descision in two assumptions 
+1. The library will be used across most or all apps within the organization
+2. The organization does not use monorepo neither micro-frontends 
+Note:Vite needs to be configured in vite.config.ts for building an actual library bundle ready for npm registery
 
-## Expanding the ESLint configuration
+## Future Improvements
+1. **Styling/Theming**:
+   - Add a ThemeProvider to enable customizable design tokens and consistent theming.
+2. **Modal Feature Enhancements**:
+   - Support customization of the modal, buttons, and backdrop for greater flexibility.
+   - Add lifecycle callbacks such as afterOpen, afterClose, and afterOk.
+   - Provide pre-defined modal variations (e.g., ModalError, ModalWarning, ModalInfo).
+3. **Testing**:
+   - Expand test coverage for edge cases and accessibility in the modal (Include tests for focus management and keyboard navigation).
+4. **DX**
+    -Add Storybook:Improve developer experience and debugging, it serve as documentation for users. 
+    -Add Prettier combined with a linter like ESLint: to enforce a consitent coding style in the codebase
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
